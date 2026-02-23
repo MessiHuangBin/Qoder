@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootmybatis.mapper.UserMapper">
+
+    <resultMap id="UserResultMap" type="com.example.springbootmybatis.entity.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="real_name" property="realName"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
+        <result column="user_type" property="userType"/>
+        <result column="status" property="status"/>
+        <result column="max_borrow_count" property="maxBorrowCount"/>
+        <result column="current_borrow_count" property="currentBorrowCount"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="UserResultMap">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <select id="selectByUsername" resultMap="UserResultMap">
+        SELECT * FROM user WHERE username = #{username}
+    </select>
+
+    <select id="selectByStatus" resultMap="UserResultMap">
+        SELECT * FROM user WHERE status = #{status}
+    </select>
+
+    <select id="selectAll" resultMap="UserResultMap">
+        SELECT * FROM user
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user(username, password, real_name, email, phone, user_type, status, max_borrow_count)
+        VALUES(#{username}, #{password}, #{realName}, #{email}, #{phone}, #{userType}, #{status}, #{maxBorrowCount})
+    </insert>
+
+    <update id="update">
+        UPDATE user 
+        SET real_name = #{realName}, 
+            email = #{email}, 
+            phone = #{phone},
+            status = #{status}, 
+            max_borrow_count = #{maxBorrowCount}, 
+            update_time = NOW() 
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+
+</mapper>
