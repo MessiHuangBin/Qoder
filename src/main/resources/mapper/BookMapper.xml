@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootmybatis.infrastructure.repository.mapper.BookMapper">
+
+    <resultMap id="BookResultMap" type="com.example.springbootmybatis.infrastructure.repository.po.BookPO">
+        <id column="id" property="id"/>
+        <result column="isbn" property="isbn"/>
+        <result column="title" property="title"/>
+        <result column="author" property="author"/>
+        <result column="publisher" property="publisher"/>
+        <result column="publish_date" property="publishDate"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="location" property="location"/>
+        <result column="total_count" property="totalCount"/>
+        <result column="available_count" property="availableCount"/>
+        <result column="status" property="status"/>
+        <result column="description" property="description"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="BookResultMap">
+        SELECT * FROM book WHERE id = #{id} AND deleted = 0
+    </select>
+
+    <select id="selectByIsbn" resultMap="BookResultMap">
+        SELECT * FROM book WHERE isbn = #{isbn} AND deleted = 0
+    </select>
+
+    <select id="selectByTitle" resultMap="BookResultMap">
+        SELECT * FROM book WHERE title LIKE CONCAT('%', #{title}, '%') AND deleted = 0
+    </select>
+
+    <select id="selectByAuthor" resultMap="BookResultMap">
+        SELECT * FROM book WHERE author LIKE CONCAT('%', #{author}, '%') AND deleted = 0
+    </select>
+
+    <select id="selectByCategoryId" resultMap="BookResultMap">
+        SELECT * FROM book WHERE category_id = #{categoryId} AND deleted = 0
+    </select>
+
+    <select id="selectByStatus" resultMap="BookResultMap">
+        SELECT * FROM book WHERE status = #{status} AND deleted = 0
+    </select>
+
+    <select id="selectAll" resultMap="BookResultMap">
+        SELECT * FROM book WHERE deleted = 0
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO book(isbn, title, author, publisher, publish_date, category_id, 
+                         location, total_count, available_count, status, description)
+        VALUES(#{isbn}, #{title}, #{author}, #{publisher}, #{publishDate}, #{categoryId},
+               #{location}, #{totalCount}, #{availableCount}, #{status}, #{description})
+    </insert>
+
+    <update id="update">
+        UPDATE book 
+        SET isbn = #{isbn},
+            title = #{title},
+            author = #{author},
+            publisher = #{publisher},
+            publish_date = #{publishDate},
+            category_id = #{categoryId},
+            location = #{location},
+            total_count = #{totalCount},
+            available_count = #{availableCount},
+            status = #{status},
+            description = #{description}
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteById">
+        UPDATE book SET deleted = 1 WHERE id = #{id}
+    </update>
+
+</mapper>

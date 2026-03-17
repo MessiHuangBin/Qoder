@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDD 学习路线图</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+        }
+        .roadmap {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .concept {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .concept:hover {
+            transform: translateX(5px);
+        }
+        .concept-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        .concept-content {
+            flex: 1;
+        }
+        .concept-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .concept-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .concept-status {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        /* 状态颜色 */
+        .not-started {
+            background: #f5f5f5;
+            border-left: 4px solid #ccc;
+        }
+        .not-started .concept-number { background: #ccc; }
+        .not-started .concept-status { background: #e0e0e0; color: #666; }
+        
+        .in-progress {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            animation: pulse 2s infinite;
+        }
+        .in-progress .concept-number { background: #2196f3; }
+        .in-progress .concept-status { background: #2196f3; color: white; }
+        
+        .mastered {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+        .mastered .concept-number { background: #4caf50; }
+        .mastered .concept-status { background: #4caf50; color: white; }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(33, 150, 243, 0); }
+        }
+        
+        .progress-bar {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        .progress-bar-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .progress-track {
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 12.5%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DDD 领域驱动设计</h1>
+        <p class="subtitle">从代码驱动到领域驱动的思维转变</p>
+        
+        <div class="roadmap">
+            <div class="concept in-progress">
+                <div class="concept-number">1</div>
+                <div class="concept-content">
+                    <div class="concept-title">什么是DDD</div>
+                    <div class="concept-desc">理解DDD的核心理念：以业务领域为中心进行软件开发</div>
+                </div>
+                <div class="concept-status">学习中</div>
+            </div>
+            
+            <div class="concept not-started">
+                <div class="concept-number">2</div>
+                <div class="concept-content">
+                    <div class="concept-title">领域与子域</div>
+                    <div class="concept-desc">识别业务边界，将复杂系统划分为可管理的子域</div>
+                </div>
+                <div class="concept-status">未开始</div>
+            </div>
+            
+            <div class="concept not-started">
+                <div class="concept-number">3</div>
+                <div class="concept-content">
+                    <div class="concept-title">限界上下文</div>
+                    <div class="concept-desc">定义清晰的边界，处理不同上下文间的映射关系</div>
+                </div>
+                <div class="concept-status">未开始</div>
+            </div>
+            
+            <div class="concept not-started">
+                <div class="concept-number">4</div>
+                <div class="concept-content">
+                    <div class="concept-title">实体与值对象</div>
+                    <div class="concept-desc">区分有标识的实体和无标识的值对象</div>
+                </div>
+                <div class="concept-status">未开始</div>
+            </div>
+            
+            <div class="concept not-started">
+                <div class="concept-number">5</div>
+                <div class="concept-content">
+                    <div class="concept-title">聚合与聚合根</div>
+                    <div class="concept-desc">维护业务不变性，控制对象生命周期</div>
+                </div>
+                <div class="concept-status">未开始</div>
+            </div>
+            
+            <div class="concept not-started">
+                <div class="concept-number">6</div>
+                <div class="concept-content">
+                    <div class="concept-title">领域服务</div>
+                    <div class="concept-desc">处理跨实体的业务逻辑</div>
+                </div>
+                <div class="concept-status">未开始</div>
+            </div>
+            
+            <div class="concept not-started">
+                <div class="concept-number">7</div>
+                <div class="concept-content">
+                    <div class="concept-title">仓储模式</div>
+                    <div class="concept-desc">解耦领域层与数据持久化</div>
+                </div>
+                <div class="concept-status">未开始</div>
+            </div>
+            
+            <div class="concept not-started">
+                <div class="concept-number">8</div>
+                <div class="concept-content">
+                    <div class="concept-title">分层架构</div>
+                    <div class="concept-desc">用户界面层、应用层、领域层、基础设施层</div>
+                </div>
+                <div class="concept-status">未开始</div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-bar-title">总体进度</div>
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-text">1/8 概念 (12.5%)</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

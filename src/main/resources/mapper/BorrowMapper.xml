@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootmybatis.infrastructure.repository.mapper.BorrowMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.springbootmybatis.infrastructure.repository.po.BorrowRecordPO">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="book_id" property="bookId"/>
+        <result column="borrow_date" property="borrowDate"/>
+        <result column="due_date" property="dueDate"/>
+        <result column="return_date" property="returnDate"/>
+        <result column="status" property="status"/>
+        <result column="renew_count" property="renewCount"/>
+        <result column="fine_amount" property="fineAmount"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO borrow_record (user_id, book_id, borrow_date, due_date, return_date, status, renew_count, fine_amount)
+        VALUES (#{userId}, #{bookId}, #{borrowDate}, #{dueDate}, #{returnDate}, #{status}, #{renewCount}, #{fineAmount})
+    </insert>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM borrow_record WHERE id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE borrow_record
+        SET user_id = #{userId},
+            book_id = #{bookId},
+            borrow_date = #{borrowDate},
+            due_date = #{dueDate},
+            return_date = #{returnDate},
+            status = #{status},
+            renew_count = #{renewCount},
+            fine_amount = #{fineAmount}
+        WHERE id = #{id}
+    </update>
+
+    <select id="selectByUserIdAndStatus" resultMap="BaseResultMap">
+        SELECT * FROM borrow_record 
+        WHERE user_id = #{userId} AND status = #{status}
+        ORDER BY borrow_date DESC
+    </select>
+
+    <select id="selectByBookIdAndStatus" resultMap="BaseResultMap">
+        SELECT * FROM borrow_record 
+        WHERE book_id = #{bookId} AND status = #{status}
+        ORDER BY borrow_date DESC
+    </select>
+
+</mapper>
