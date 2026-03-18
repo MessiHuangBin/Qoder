@@ -15,6 +15,9 @@ public class GlobalExceptionHandler {
         return Result.error("系统错误: " + e.getMessage());
     }
 
+
+    
+
     @ExceptionHandler(RuntimeException.class)
     public Result<Void> handleRuntimeException(RuntimeException e) {
         return Result.error("运行时错误: " + e.getMessage());
