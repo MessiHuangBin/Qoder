@@ -22,19 +22,24 @@ public class BorrowController {
     }
     
     /**
-     * 借阅图书
+     * 借阅图书  
      * POST /api/borrow
      * Body: {"userId": 1, "bookId": 1}
      */
     @PostMapping
     public Result<BorrowDTO> borrowBook(@RequestBody Map<String, Long> params) {
         Long userId = params.get("userId");
-        Long bookId = params.get("bookId");
+
+
+
+
+
+
         
+        Long bookId = params.get("bookId");
         if (userId == null || bookId == null) {
             return Result.error("用户ID和图书ID不能为空");
         }
-        
         try {
             BorrowDTO dto = borrowAppService.borrowBook(userId, bookId);
             return Result.success(dto);
