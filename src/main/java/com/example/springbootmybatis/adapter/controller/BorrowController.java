@@ -29,6 +29,12 @@ public class BorrowController {
     @PostMapping
     public Result<BorrowDTO> borrowBook(@RequestBody Map<String, Long> params) {
         Long userId = params.get("userId");
+
+
+
+
+
+        
         Long bookId = params.get("bookId");
         if (userId == null || bookId == null) {
             return Result.error("用户ID和图书ID不能为空");
